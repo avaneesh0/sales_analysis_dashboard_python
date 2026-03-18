@@ -13,4 +13,4 @@ sales_data["TERRITORY"] = sales_data["TERRITORY"].fillna("Missing")
 sales_data = sales_data[sales_data["STATUS"] == "Shipped"]
 
 # save clean dataset in different file
-sales_data.to_csv(os.path.join("data/processed/clean_sales_data_sample.csv"), index=False)
+sales_data.to_csv(os.path.join("data/processed/clean_sales_data.csv"), index=False)
