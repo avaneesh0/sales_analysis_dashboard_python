@@ -1,8 +1,7 @@
 import matplotlib.pyplot as plt
-import pandas as pd
-import os
+from data_loader import loadData 
 
-sales_data = pd.read_csv(os.path.join("data/processed/clean_sales_data.csv"))
+sales_data = loadData()
 
 # sales per years bar
 sales_data.groupby("YEAR_ID")["SALES"].sum().plot(kind="bar")
