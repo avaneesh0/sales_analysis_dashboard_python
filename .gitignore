@@ -1,3 +1,5 @@
 src\vis.py
 
 src\__pycache__\
+*.pyc
+*.py
