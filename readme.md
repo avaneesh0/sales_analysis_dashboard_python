@@ -103,13 +103,13 @@ pip install -r requirements.txt
 3. Run data cleaning
 
 ```
-python scripts/01_cleaning.py
+python scripts/cleaning.py
 ```
 
 4. Run visualization
 
 ```
-python scripts/02_visualization.py
+python scripts/visualization.py
 ```
 
 ## Author
