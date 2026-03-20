@@ -2,9 +2,15 @@
 
 ## Project Overview
 
-This project analyzes a sales dataset to understand business performance across different dimensions such as **product line, country, month, quarter, and year**.
+🚀 Interactive Sales Dashboard using Streamlit & Plotly | End-to-End Data Analysis Project
 
-The data was cleaned using Python and visualized using charts to identify key trends and insights.
+The data was cleaned using Python **pandas**, visualized using **matplotlib and plotly** charts to identify key trends and insights and dashboard using **streamlit**.
+
+The project covers the complete workflow:
+- Data Cleaning (Pandas)
+- Exploratory Data Analysis (Jupyter)
+- Interactive Dashboard (Streamlit)
+- Visualization (Matplotlib and Plotly)
 
 ## Business Questions Answered
 
@@ -19,33 +25,33 @@ This analysis aims to answer the following business questions:
 ## Project Structure
 
 ```
-data/
- ├── raw/
- │   └── sales_data_sample.csv
- └── processed/
-     └── clean_sales_data.csv
-
-notebooks/
- └── 01_explore.ipynb
-
-scripts/
- ├── 01_cleaning.py
- └── 02_visualization.py
-
-reports/
- ├── figures/
- └── summary.txt
-
-requirements.txt
-README.md
+SALES_ANALYSIS_DASHBOARD_PYTHON/
+│
+├── app.py # Main Streamlit app
+│
+├── data/ # Raw & processed data
+│
+├── notebooks/ # Data exploration (EDA)
+│ └── 01_explore.ipynb
+│
+├── src/ # Core logic
+│ ├── data_loader.py
+│ ├── cleaning.py
+│ └── visualization.py
+│
+├── requirements.txt
+└── README.md
 ```
 
 ## Technologies Used
 
 * Python
+* Numpy
 * Pandas
 * Matplotlib
+* Plotly
 * Jupyter Notebook
+* Streamlit
 * VS Code
 
 ## Data Cleaning Steps
@@ -53,7 +59,7 @@ README.md
 The following preprocessing steps were performed:
 
 * Converted ORDERDATE to datetime format
-* Removed duplicate rows
+* Checked for deplicate value than Removed duplicate rows
 * Checked for missing values
 * Aggregated sales data for visualization
 
@@ -63,17 +69,21 @@ data/processed/clean_sales_data.csv
 
 ## Visualizations Created
 
-The following charts were generated:
-
 1. Sales by Country (Bar Chart)
 2. Sales by Month (Line Chart)
 3. Sales by Product Line (Bar Chart)
 4. Sales by Quarter (Bar Chart)
 5. Sales by Year (Bar Chart)
-6. Monthly Sales Trend (Heat map)
-7. Sales by Product Line (pie Chart)
 
 These charts help identify business performance trends and seasonal patterns.
+
+## 📸 Demo
+
+### 🔹 Dashboard Overview
+![Dashboard](assets/images/dashboard.png)
+
+### 🔹 Sales by Product Line
+![Chart](assets/images/chart.png)
 
 ## Key Insights
 
@@ -103,6 +113,5 @@ python scripts/02_visualization.py
 ```
 
 ## Author
-Avaneesh singh
 
 Data Analysis Project built using Python.
