@@ -1,5 +1,5 @@
 src\vis.py
 
 **src\__pycache__\
-*.pyc
+*.pyc*
 *.py
