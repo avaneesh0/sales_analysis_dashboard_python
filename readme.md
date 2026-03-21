@@ -1,4 +1,10 @@
-# Business Sales Data Analysis Dashboard
+# 📊 Sales Dashboard (Streamlit)
+
+An interactive sales dashboard built using Python, Pandas, and Streamlit to analyze and visualize business sales data.
+
+🚀 Live Demo
+
+👉 👉 [Click here to view the app](https://sales-analytics-dashboard-by-avaneesh.streamlit.app/)
 
 ## Project Overview
 
@@ -11,16 +17,6 @@ The project covers the complete workflow:
 - Exploratory Data Analysis (Jupyter)
 - Interactive Dashboard (Streamlit)
 - Visualization (Matplotlib and Plotly)
-
-## Business Questions Answered
-
-This analysis aims to answer the following business questions:
-
-1. Which countries generate the highest sales?
-2. Which product lines are the most profitable?
-3. How do sales change across months and quarters?
-4. Is there any seasonal trend in sales?
-5. Which year had the highest sales growth?
 
 ## Project Structure
 
@@ -77,7 +73,13 @@ data/processed/clean_sales_data.csv
 4. Sales by Quarter (Bar Chart)
 5. Sales by Year (Bar Chart)
 
-These charts help identify business performance trends and seasonal patterns.
+## These charts help identify business performance trends and seasonal patterns.
+
+📊 Sample Insights
+
+1. Sales trends across different years
+2. Peak sales months
+3. Revenue distribution
 
 ## 📸 Demo
 
@@ -90,13 +92,19 @@ These charts help identify business performance trends and seasonal patterns.
 ### 🔹 Sales by Country and Year
 ![Chart](assets/images/02-chart.png)
 
+## 🔮 Future Improvements
+
+* Add more filters (country, product line)
+* Improve UI/UX
+* Add advanced analytics
+* Deploy with custom domain
 
 ## How to Run the Project
 
 1 - Clone the repository
 
  - git clone https://github.com/avaneesh0/sales_analysis_dashboard_python
- 
+
 2 - Install dependencies
  
  - pip install -r requirements.txt
@@ -106,5 +114,7 @@ These charts help identify business performance trends and seasonal patterns.
  - streamlit run app.py
 
 ## Author
+
+Avaneesh Singh
 
 Data Analysis Project built using Python.
