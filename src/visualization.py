@@ -1,5 +1,5 @@
 import pandas as pd
-import plotly as px
+import plotly.express as px
 
 # sales per quaters bar 
 def sales_per_quater(df: pd.DataFrame, year):
