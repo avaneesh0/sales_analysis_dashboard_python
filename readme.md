@@ -31,8 +31,10 @@ SALES_ANALYSIS_DASHBOARD_PYTHON/
 │
 ├── data/ # Raw & processed data
 │
+├──assets/ # Contain img for demo
+│
 ├── notebooks/ # Data exploration (EDA)
-│ └── 01_explore.ipynb
+│ └── explore.ipynb
 │
 ├── src/ # Core logic
 │ ├── data_loader.py
@@ -71,7 +73,7 @@ data/processed/clean_sales_data.csv
 
 1. Sales by Country (Bar Chart)
 2. Sales by Month (Line Chart)
-3. Sales by Product Line (Bar Chart)
+3. Sales by Product Line (Pie Chart)
 4. Sales by Quarter (Bar Chart)
 5. Sales by Year (Bar Chart)
 
@@ -82,35 +84,26 @@ These charts help identify business performance trends and seasonal patterns.
 ### 🔹 Dashboard Overview
 ![Dashboard](assets/images/dashboard.png)
 
-### 🔹 Sales by Product Line
-![Chart](assets/images/chart.png)
+### 🔹 Sales by Product Line and Quarter
+![Chart](assets/images/01-chart.png)
 
-## Key Insights
+### 🔹 Sales by Country and Year
+![Chart](assets/images/02-chart.png)
 
-* Certain countries contribute significantly higher sales.
-* Sales show seasonal trends across months.
-* Some product lines generate more revenue than others.
 
 ## How to Run the Project
 
-1. Clone the repository
-2. Install dependencies
+1 - Clone the repository
 
-```
-pip install -r requirements.txt
-```
+ - git clone https://github.com/avaneesh0/sales_analysis_dashboard_python
+ 
+2 - Install dependencies
+ 
+ - pip install -r requirements.txt
 
-3. Run data cleaning
+3 - Run the Streamlit app
 
-```
-python scripts/cleaning.py
-```
-
-4. Run visualization
-
-```
-python scripts/visualization.py
-```
+ - streamlit run app.py
 
 ## Author
 

@@ -4,7 +4,8 @@ from src.visualization import (sales_per_quater,
                                sales_per_year,
                                sales_per_product,
                                sales_per_country,
-                               sales_per_month)
+                               sales_per_month
+                               )
 
 sales_data = loadData()
 
@@ -15,7 +16,7 @@ st.markdown("Analyze sales performance across time, product lines, and regions."
 
 st.sidebar.header("🔎 Filters")
 year = st.sidebar.selectbox("Select Year", ["All"] + sorted(sales_data["YEAR_ID"].unique()))
-product = st.sidebar.selectbox("Select Product", ["All"] + sorted(sales_data["PRODUCTLINE"].unique()))
+# product = st.sidebar.selectbox("Select Product", ["All"] + sorted(sales_data["PRODUCTLINE"].unique()))
 
 col1, col2, col3 = st.columns(3)
 
@@ -54,6 +55,7 @@ with col6:
 with col7:
     st.subheader("📅 Sales per Year ")
     st.plotly_chart(fig4, use_container_width=True)
+    st.info("-2005 is from january-may")
 
 st.markdown("----")
 
