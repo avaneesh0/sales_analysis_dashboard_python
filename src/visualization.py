@@ -2,12 +2,19 @@ import pandas as pd
 import plotly.express as px
 
 # sales per quaters bar 
-def sales_per_quater(df: pd.DataFrame, year):
+def sales_per_quater(df: pd.DataFrame, year,country: str  , product: str):
     if year == "All":
         data = (df.groupby(["YEAR_ID", "QTR_ID"])["SALES"]
                 .sum()
                 .reset_index()
                 )
+        if product != "All":
+                product_filter = df[df["PRODUCTLINE"] == product]
+                data = (product_filter.groupby(["YEAR_ID", "QTR_ID"])["SALES"]
+                .sum()
+                .reset_index()
+                )
+                 
         data["year-quarter"] = "Q" + data["QTR_ID"].astype(str) + "-"+ data["YEAR_ID"].astype(str)
         fig = px.bar(data, 
                     x="year-quarter", 
@@ -24,6 +31,12 @@ def sales_per_quater(df: pd.DataFrame, year):
                 .sum()
                 .reset_index()
                 )
+        if product != "All":
+                product_filter = df[(df["PRODUCTLINE"] == product) & (df["YEAR_ID"] == year)]
+                data = (product_filter.groupby(["YEAR_ID", "QTR_ID"])["SALES"]
+                        .sum()
+                        .reset_index()
+                        )
         data["year-quarter"] = "Q" + data["QTR_ID"].astype(str) + "-" +  year.astype(str)
         fig = px.bar(data, 
                     x="year-quarter", 
@@ -36,24 +49,30 @@ def sales_per_quater(df: pd.DataFrame, year):
         return fig
 
 # sales per years bar
-def sales_per_year(df: pd.DataFrame, year):
-    
-    data = (df.groupby("YEAR_ID")["SALES"]
-            .sum()
-            .reset_index()
-            )
-    fig = px.bar(data, 
-                 x="YEAR_ID", 
-                 y="SALES",
-                 height=450,
-                 width=500,
-                 labels={"YEAR_ID": "Year", 
-                         "SALES": "Sales"}
-                 )
-    return fig
+def sales_per_year(df: pd.DataFrame, year,country: str  , product: str):
+        if product != "All":
+                product_filter = df[df["PRODUCTLINE"] == product]
+                data = (product_filter.groupby("YEAR_ID")["SALES"]
+                        .sum()
+                        .reset_index()
+                        )
+        else:
+                data = (df.groupby("YEAR_ID")["SALES"]
+                .sum()
+                .reset_index()
+                )
+        fig = px.bar(data, 
+                x="YEAR_ID", 
+                y="SALES",
+                height=450,
+                width=500,
+                labels={"YEAR_ID": "Year", 
+                        "SALES": "Sales"}
+                )
+        return fig
 
 # sales per product line bar
-def sales_per_product(df: pd.DataFrame, year):
+def sales_per_product(df: pd.DataFrame, year,country: str  , product: str):
     if year != "All":
         data = (df[df["YEAR_ID"] == year]
                 .groupby("PRODUCTLINE")["SALES"]
@@ -67,16 +86,17 @@ def sales_per_product(df: pd.DataFrame, year):
                 .sort_values()
                 .reset_index()
                 )
+        
     fig = px.pie(data, 
-                 names="PRODUCTLINE",
-                 values="SALES",
-                 height=430,
-                 width=500,
-                )
+        names="PRODUCTLINE",
+        values="SALES",
+        height=430,
+        width=500,
+        )
     return fig
     
 # sales per country
-def sales_per_country(df: pd.DataFrame, year):
+def sales_per_country(df: pd.DataFrame, year,country: str  , product: str):
     if year != "All":
         data = (df[df["YEAR_ID"] == year]
                 .groupby("COUNTRY")["SALES"]
@@ -84,12 +104,28 @@ def sales_per_country(df: pd.DataFrame, year):
                 .sort_values()
                 .reset_index()
                 )
+        if product != "All":
+                product_filter = df[(df["PRODUCTLINE"] == product) & (df["YEAR_ID"] == year)]
+                data = (product_filter
+                        .groupby("COUNTRY")["SALES"]
+                        .sum()
+                        .sort_values()
+                        .reset_index()
+                        )
     else:
         data = (df.groupby("COUNTRY")["SALES"]
                 .sum()
                 .sort_values()
                 .reset_index()
                 )
+        if product != "All":
+                product_filter = df[df["PRODUCTLINE"] == product]
+                data = (product_filter
+                        .groupby("COUNTRY")["SALES"]
+                        .sum()
+                        .sort_values()
+                        .reset_index()
+                        )
     fig = px.bar(data, 
                  x="SALES",
                  y="COUNTRY", 
@@ -100,12 +136,19 @@ def sales_per_country(df: pd.DataFrame, year):
     return fig
 
 # sales per month
-def sales_per_month(df: pd.DataFrame, year):
+def sales_per_month(df: pd.DataFrame, year,country: str  , product: str):
     if year == "All":
         data = (df.groupby(["YEAR_ID", "MONTH_ID"])["SALES"]
                 .sum()
                 .reset_index()
                 )
+        if product != "All":
+                product_filter = df[df["PRODUCTLINE"] == product]
+                data = (product_filter
+                        .groupby(["YEAR_ID", "MONTH_ID"])["SALES"]
+                        .sum()
+                        .reset_index()
+                        )
         data["year-month"] = data["YEAR_ID"].astype(str) + "-" +  data["MONTH_ID"].astype(str)
         fig = px.line(data, 
                     x="year-month", 
@@ -120,6 +163,13 @@ def sales_per_month(df: pd.DataFrame, year):
                 .sum()
                 .reset_index()
                 )
+        if product != "All":
+                product_filter = df[(df["PRODUCTLINE"] == product) & (df["YEAR_ID"] == year)]
+                data = (product_filter
+                        .groupby(["YEAR_ID", "MONTH_ID"])["SALES"]
+                        .sum()
+                        .reset_index()
+                        )
         data["year-month"] = year.astype(str) + "-" +  data["MONTH_ID"].astype(str)
         fig = px.line(data, 
                     x="year-month", 

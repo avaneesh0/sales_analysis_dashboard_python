@@ -16,7 +16,8 @@ st.markdown("Analyze sales performance across time, product lines, and regions."
 
 st.sidebar.header("🔎 Filters")
 year = st.sidebar.selectbox("Select Year", ["All"] + sorted(sales_data["YEAR_ID"].unique()))
-# product = st.sidebar.selectbox("Select Product", ["All"] + sorted(sales_data["PRODUCTLINE"].unique()))
+product = st.sidebar.selectbox("Select Product", ["All"] + sorted(sales_data["PRODUCTLINE"].unique()))
+Country = st.sidebar.selectbox("Select Country", ["All"] + sorted(sales_data["COUNTRY"].unique()))
 
 col1, col2, col3 = st.columns(3)
 
@@ -26,31 +27,31 @@ col3.metric(" 📊 Average order value", f"${sales_data['SALES'].mean():,.0f}")
 
 st.markdown("----")
 
-mainfig = sales_per_month(sales_data, year)
+mainfig = sales_per_month(sales_data, year, Country, product)
 st.subheader("📈 Monthly Sales Trend")
 st.plotly_chart(mainfig, use_container_width=True)
 
 st.markdown("----")
 
 col4, col5 = st.columns(2)
-fig1 = sales_per_quater(sales_data , year)
-fig2 = sales_per_product(sales_data , year)
+fig1 = sales_per_quater(sales_data , year, Country, product)
+fig2 = sales_per_country(sales_data , year, Country, product)
 
 with col4:
     st.subheader("📅 Quarterly Sales Distribution")
     st.plotly_chart(fig1, use_container_width=True)
 with col5:
-    st.subheader("📊 Sales by Product Line")
+    st.subheader("🌍 Sales by Country")
     st.plotly_chart(fig2, use_container_width=True)
 
 st.markdown("----")
 
 col6, col7 = st.columns(2)
-fig3 = sales_per_country(sales_data , year)
-fig4 = sales_per_year(sales_data , year)
+fig3 = sales_per_product(sales_data , year, Country, product)
+fig4 = sales_per_year(sales_data , year, Country, product)
 
 with col6:
-    st.subheader("🌍 Sales by Country")
+    st.subheader("📊 Sales by Product Line")
     st.plotly_chart(fig3, use_container_width=True)
 with col7:
     st.subheader("📅 Sales per Year ")
