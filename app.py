@@ -47,8 +47,8 @@ with col5:
 st.markdown("----")
 
 col6, col7 = st.columns(2)
-fig3 = sales_per_product(sales_data , year, Country, product)
-fig4 = sales_per_year(sales_data , year, Country, product)
+fig3 = sales_per_product(sales_data , year, Country)
+fig4 = sales_per_year(sales_data, Country, product)
 
 with col6:
     st.subheader("📊 Sales by Product Line")
