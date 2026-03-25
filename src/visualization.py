@@ -2,7 +2,7 @@ import pandas as pd
 import plotly.express as px
 
 # sales per quaters bar 
-def sales_per_quater(df: pd.DataFrame, year,country: str  , product: str):
+def sales_per_quarter(df: pd.DataFrame, year,country: str  , product: str):
     if year == "All":
         data = (df.groupby(["YEAR_ID", "QTR_ID"])["SALES"]
                 .sum()
@@ -38,7 +38,8 @@ def sales_per_quater(df: pd.DataFrame, year,country: str  , product: str):
                     height=350,
                     width=500,
                     labels={"year-quarter": "Quarter", 
-                            "SALES": "Sales"}
+                            "SALES": "Sales"},
+                    title=" 📅 Quarterly Sales Distribution ",
                     )
         return fig
 
@@ -72,13 +73,14 @@ def sales_per_quater(df: pd.DataFrame, year,country: str  , product: str):
                         )
         data["year-quarter"] = "Q" + data["QTR_ID"].astype(str) + "-" +  year.astype(str)
         fig = px.bar(data, 
-                    x="year-quarter", 
-                    y="SALES",
-                    height=450,
-                    width=600,
-                    labels={"year-quarter": "Quarter", 
-                            "SALES": "Sales"}
-                    )
+                x="year-quarter", 
+                y="SALES",
+                height=450,
+                width=600,
+                labels={"year-quarter": "Quarter", 
+                        "SALES": "Sales"},
+                title=" 📅 Quarterly Sales Distribution "
+                )
         return fig
 
 # sales per years bar
@@ -109,7 +111,8 @@ def sales_per_year(df: pd.DataFrame, country: str  , product: str):
                 height=450,
                 width=500,
                 labels={"YEAR": "Year", 
-                        "SALES": "Sales"}
+                        "SALES": "Sales"},
+                title="📅 Sales per Year "
                 )
         return fig
 
@@ -146,8 +149,9 @@ def sales_per_product(df: pd.DataFrame, year,country: str ):
     fig = px.pie(data, 
         names="PRODUCTLINE",
         values="SALES",
-        height=430,
+        height=500,
         width=500,
+        title="📊 Sales by Product Line"
         )
     return fig
     
@@ -189,10 +193,12 @@ def sales_per_country(df: pd.DataFrame, year,country: str  , product: str):
                  y="COUNTRY",
                  color="COLOR",
                  color_discrete_map={f"{country}": "green", "Other": "skyblue"},
-                 height=450,
+                 height=500,
                  width=500,
                  orientation="h",
-                 labels={"COUNTRY": "Countrys", "SALES": "Sales"})
+                 labels={"COUNTRY": "Countrys", "SALES": "Sales"},
+                 title="🌍 Sales by Country"
+                 )
     return fig
 
 # sales per month
@@ -230,7 +236,10 @@ def sales_per_month(df: pd.DataFrame, year,country: str  , product: str):
                     y="SALES",
                     height=350,
                     width=500,
-                    labels={"year-month": "Month-Year", "SALES": "Sales"})
+                    labels={"year-month": "Month-Year", 
+                            "SALES": "Sales"},
+                    title="📈 Monthly Sales Trend",
+                    )
         return fig
     else:
         filtered_df = df[df["YEAR_ID"] == year]
@@ -261,11 +270,13 @@ def sales_per_month(df: pd.DataFrame, year,country: str  , product: str):
                         )
         data["year-month"] = year.astype(str) + "-" +  data["MONTH_ID"].astype(str)
         fig = px.line(data, 
-                    x="year-month", 
-                    y="SALES",
-                    height=350,
-                    width=500,
-                    labels={"year-month": "Month-Year", "SALES": "Sales"})
+                x="year-month", 
+                y="SALES",
+                height=350,
+                labels={"year-month": "Month-Year",
+                        "SALES": "Sales"},
+                title="📈 Monthly Sales Trend",
+                )
         fig.update_xaxes(type="category")
 
         return fig

@@ -94,7 +94,8 @@ data/processed/clean_sales_data.csv
 
 ## 🔮 Future Improvements
 
-* Add more filters (country, product line)
+* Multi-page app
+* Add login system + theme
 * Improve UI/UX
 * Add advanced analytics
 * Deploy with custom domain
