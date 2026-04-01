@@ -43,7 +43,7 @@ col1, col2, col3 = st.columns(3)
 
 col1.metric(" 💰 Total sales", f"${filter_data['SALES'].sum():,.0f}")
 col2.metric(" 📦 Total order", f"{filter_data.shape[0]:,}")
-col3.metric(" 📊 Average order value", f"${filter_data['SALES'].mean():,.0f}")
+col3.metric(" 📊 Average order value", f"${0 if filter_data['SALES'].sum() == 0 else filter_data['SALES'].mean():,.0f}")
 
 st.divider()
 
